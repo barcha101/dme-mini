@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Lead Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      background: #fff;
+      max-width: 900px;
+      margin: auto;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      display: none; /* hidden until "Add Lead" is clicked */
+    }
+    h2 {
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 5px;
+      margin-top: 30px;
+      margin-bottom: 15px;
+    }
+    .section {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+    .form-group {
+      flex: 1 1 300px;
+      display: flex;
+      flex-direction: column;
+    }
+    .form-group label {
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      font-size: 14px;
+    }
+    button[type="submit"] {
+      background: #007BFF;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+    button[type="submit"]:hover {
+      background: #0056b3;
+    }
+    #message {
+      margin-top: 20px;
+      font-weight: bold;
+      text-align: center;
+    }
+    #addLeadButton {
+      display: block;
+      margin: auto;
+      padding: 10px 20px;
+      font-size: 16px;
+      background: #007BFF;
+      color: #fff;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Add Lead Button (initially visible) -->
+  <button id="addLeadButton">Add Lead</button>
+
+  <!-- Form Container (initially hidden) -->
+  <div class="container" id="leadFormContainer">
+    <form id="leadForm">
+      <h2>Basic Info</h2>
+      <div class="section">
+        <div class="form-group">
+          <label for="fName">First Name *</label>
+          <input type="text" id="fName" name="fName" required>
+        </div>
+        <div class="form-group">
+          <label for="mName">Middle Name</label>
+          <input type="text" id="mName" name="mName">
+        </div>
+        <div class="form-group">
+          <label for="lName">Last Name *</label>
+          <input type="text" id="lName" name="lName" required>
+        </div>
+        <div class="form-group">
+          <label for="gender">Gender *</label>
+          <select id="gender" name="gender" required>
+            <option value="">Select gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone *</label>
+          <input type="text" id="phone" name="phone" required>
+        </div>
+        <div class="form-group">
+          <label for="dob">Date of Birth *</label>
+          <input type="date" id="dob" name="dob" required>
+        </div>
+        <div class="form-group">
+          <label for="street">Street Address *</label>
+          <input type="text" id="street" name="street" required>
+        </div>
+        <div class="form-group">
+          <label for="city">City *</label>
+          <input type="text" id="city" name="city" required>
+        </div>
+        <div class="form-group">
+          <label for="state">State *</label>
+          <select id="state" name="state" required>
+            <option value="">Select state</option>
+            <option value="AL">AL</option>
+            <option value="AK">AK</option>
+            <option value="AZ">AZ</option>
+            <option value="AR">AR</option>
+            <option value="CA">CA</option>
+            <option value="CO">CO</option>
+            <option value="CT">CT</option>
+            <option value="DE">DE</option>
+            <option value="DC">DC</option>
+            <option value="FL">FL</option>
+            <option value="GA">GA</option>
+            <option value="HI">HI</option>
+            <option value="ID">ID</option>
+            <option value="IL">IL</option>
+            <option value="IN">IN</option>
+            <option value="IA">IA</option>
+            <option value="KS">KS</option>
+            <option value="KY">KY</option>
+            <option value="LA">LA</option>
+            <option value="ME">ME</option>
+            <option value="MD">MD</option>
+            <option value="MA">MA</option>
+            <option value="MI">MI</option>
+            <option value="MN">MN</option>
+            <option value="MS">MS</option>
+            <option value="MO">MO</option>
+            <option value="MT">MT</option>
+            <option value="NE">NE</option>
+            <option value="NV">NV</option>
+            <option value="NH">NH</option>
+            <option value="NJ">NJ</option>
+            <option value="NM">NM</option>
+            <option value="NY">NY</option>
+            <option value="NC">NC</option>
+            <option value="ND">ND</option>
+            <option value="OH">OH</option>
+            <option value="OK">OK</option>
+            <option value="OR">OR</option>
+            <option value="PA">PA</option>
+            <option value="RI">RI</option>
+            <option value="SC">SC</option>
+            <option value="SD">SD</option>
+            <option value="TN">TN</option>
+            <option value="TX">TX</option>
+            <option value="UT">UT</option>
+            <option value="VT">VT</option>
+            <option value="VA">VA</option>
+            <option value="WA">WA</option>
+            <option value="WV">WV</option>
+            <option value="WI">WI</option>
+            <option value="WY">WY</option>
+            <option value="AS">AS</option>
+            <option value="GU">GU</option>
+            <option value="MP">MP</option>
+            <option value="PR">PR</option>
+            <option value="UM">UM</option>
+            <option value="VI">VI</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="zip">Zip Code *</label>
+          <input type="text" id="zip" name="zip" required>
+        </div>
+        <div class="form-group">
+          <label for="height">Height</label>
+          <input type="text" id="height" name="height">
+        </div>
+        <div class="form-group">
+          <label for="weight">Weight</label>
+          <input type="text" id="weight" name="weight">
+        </div>
+        <div class="form-group">
+          <label for="waist">Waist *</label>
+          <input type="text" id="waist" name="waist" required>
+        </div>
+        <div class="form-group">
+          <label for="braceSize">Brace Size</label>
+          <input type="text" id="braceSize" name="braceSize">
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email">
+        </div>
+      </div>
+
+      <h2>Insurance</h2>
+      <div class="section">
+        <div class="form-group">
+          <label for="medicareId">Medicare ID *</label>
+          <input type="text" id="medicareId" name="medicareId" required>
+        </div>
+        <div class="form-group">
+          <label for="privateInsName">Private Insurance Name</label>
+          <select id="privateInsName" name="privateInsName">
+            <option value="">Select Insurance</option>
+            <option value="AETNA">AETNA</option>
+            <option value="CLOVER">CLOVER</option>
+            <option value="CIGNA">CIGNA</option>
+            <option value="BCBS">BCBS</option>
+            <option value="HUMANA">HUMANA</option>
+            <option value="UHC">UHC</option>
+            <option value="Part B">Part B</option>
+            <option value="AARP">AARP</option>
+            <option value="Wellcare">Wellcare</option>
+            <option value="GEISINGER">GEISINGER</option>
+            <option value="AMERI">AMERI</option>
+            <option value="MERIDIAN">MERIDIAN</option>
+            <option value="SILVERSCRIPT">SILVERSCRIPT</option>
+            <option value="HEALTH CARE SERVICE CORPORATION">HEALTH CARE SERVICE CORPORATION</option>
+            <option value="SIERRA">SIERRA</option>
+            <option value="Network Health">Network Health</option>
+            <option value="COMMONWEALTH">COMMONWEALTH</option>
+            <option value="Care n Care">Care n Care</option>
+            <option value="PRIORITY">PRIORITY</option>
+            <option value="ATRIO">ATRIO</option>
+            <option value="Oxford Health">Oxford Health</option>
+            <option value="MOLINA">MOLINA</option>
+            <option value="Devoted Health">Devoted Health</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="privateInsId">Private Insurance ID</label>
+          <input type="text" id="privateInsId" name="privateInsId">
+        </div>
+      </div>
+
+      <h2>Medical Info</h2>
+      <div class="section">
+        <div class="form-group">
+          <label for="painArea">Pain Area</label>
+          <select id="painArea" name="painArea" multiple>
+            <option value="Back">Back</option>
+            <option value="Right Knee">Right Knee</option>
+            <option value="Left Knee">Left Knee</option>
+            <option value="Right Shoulder">Right Shoulder</option>
+            <option value="Left Shoulder">Left Shoulder</option>
+            <option value="Right Wrist">Right Wrist</option>
+            <option value="Left Wrist">Left Wrist</option>
+            <option value="Hip">Hip</option>
+            <option value="Elbow">Elbow</option>
+            <option value="Right Ankle">Right Ankle</option>
+            <option value="Left Ankle">Left Ankle</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="painLevel">Pain Level</label>
+          <select id="painLevel" name="painLevel">
+            <option value="">Select pain level</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="treatmentsTaking">Over the counter treatments</label>
+          <input type="text" id="treatmentsTaking" name="treatmentsTaking">
+        </div>
+        <div class="form-group">
+          <label for="diabetic">Diabetic</label>
+          <select id="diabetic" name="diabetic">
+            <option value="">Select diabetes type</option>
+            <option value="None">None</option>
+            <option value="Type 1">Type 1</option>
+            <option value="Type 2">Type 2</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="diabeticMedication">Diabetes Medication</label>
+          <input type="text" id="diabeticMedication" name="diabeticMedication">
+        </div>
+        <div class="form-group">
+          <label for="diabeticMedicationTime">Diabetes Medication Time</label>
+          <input type="text" id="diabeticMedicationTime" name="diabeticMedicationTime">
+        </div>
+        <div class="form-group">
+          <label for="branceLastFiveYears">Brace 5 Years</label>
+          <select id="branceLastFiveYears" name="branceLastFiveYears">
+            <option value="">Select</option>
+            <option value="true">Yes</option>
+            <option value="false">No</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="allergies">Allergies</label>
+          <input type="text" id="allergies" name="allergies">
+        </div>
+        <div class="form-group">
+          <label for="chrnocIllness">Chronic Illness</label>
+          <select id="chrnocIllness" name="chrnocIllness">
+            <option value="">Select illness</option>
+            <option value="None">None</option>
+            <option value="Heart Failure">Heart Failure</option>
+            <option value="Cancer">Cancer</option>
+            <option value="Lung Disease">Lung Disease</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="prescribedMedication">Prescribed Medication</label>
+          <input type="text" id="prescribedMedication" name="prescribedMedication">
+        </div>
+      </div>
+
+      <h2>Last Doctor Visit</h2>
+      <div class="section">
+        <div class="form-group">
+          <label for="lastDocVisit">Last Doc Visit</label>
+          <input type="text" id="lastDocVisit" name="lastDocVisit">
+        </div>
+        <div class="form-group">
+          <label for="drName">Doctor Name *</label>
+          <input type="text" id="drName" name="drName" required>
+        </div>
+        <div class="form-group">
+          <label for="drNPI">Doctor NPI *</label>
+          <input type="text" id="drNPI" name="drNPI" required>
+        </div>
+        <div class="form-group">
+          <label for="drPhone">Doctor Phone</label>
+          <input type="text" id="drPhone" name="drPhone">
+        </div>
+        <div class="form-group">
+          <label for="drFax">Doctor Fax</label>
+          <input type="text" id="drFax" name="drFax">
+        </div>
+        <div class="form-group">
+          <label for="drAddress">Doctor Address *</label>
+          <input type="text" id="drAddress" name="drAddress" required>
+        </div>
+        <div class="form-group">
+          <label for="drCity">Doctor City *</label>
+          <input type="text" id="drCity" name="drCity" required>
+        </div>
+        <div class="form-group">
+          <label for="drState">Doctor State *</label>
+          <select id="drState" name="drState" required>
+            <option value="">Select state</option>
+            <option value="AL">AL</option>
+            <option value="AK">AK</option>
+            <option value="AZ">AZ</option>
+            <option value="AR">AR</option>
+            <option value="CA">CA</option>
+            <option value="CO">CO</option>
+            <option value="CT">CT</option>
+            <option value="DE">DE</option>
+            <option value="DC">DC</option>
+            <option value="FL">FL</option>
+            <option value="GA">GA</option>
+            <option value="HI">HI</option>
+            <option value="ID">ID</option>
+            <option value="IL">IL</option>
+            <option value="IN">IN</option>
+            <option value="IA">IA</option>
+            <option value="KS">KS</option>
+            <option value="KY">KY</option>
+            <option value="LA">LA</option>
+            <option value="ME">ME</option>
+            <option value="MD">MD</option>
+            <option value="MA">MA</option>
+            <option value="MI">MI</option>
+            <option value="MN">MN</option>
+            <option value="MS">MS</option>
+            <option value="MO">MO</option>
+            <option value="MT">MT</option>
+            <option value="NE">NE</option>
+            <option value="NV">NV</option>
+            <option value="NH">NH</option>
+            <option value="NJ">NJ</option>
+            <option value="NM">NM</option>
+            <option value="NY">NY</option>
+            <option value="NC">NC</option>
+            <option value="ND">ND</option>
+            <option value="OH">OH</option>
+            <option value="OK">OK</option>
+            <option value="OR">OR</option>
+            <option value="PA">PA</option>
+            <option value="RI">RI</option>
+            <option value="SC">SC</option>
+            <option value="SD">SD</option>
+            <option value="TN">TN</option>
+            <option value="TX">TX</option>
+            <option value="UT">UT</option>
+            <option value="VT">VT</option>
+            <option value="VA">VA</option>
+            <option value="WA">WA</option>
+            <option value="WV">WV</option>
+            <option value="WI">WI</option>
+            <option value="WY">WY</option>
+            <option value="AS">AS</option>
+            <option value="GU">GU</option>
+            <option value="MP">MP</option>
+            <option value="PR">PR</option>
+            <option value="UM">UM</option>
+            <option value="VI">VI</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="drZip">Doctor Zip *</label>
+          <input type="text" id="drZip" name="drZip" required>
+        </div>
+      </div>
+
+      <h2>Online Lead Info</h2>
+      <div class="section">
+        <div class="form-group">
+          <label for="sourceLink">Source Link *</label>
+          <input type="text" id="sourceLink" name="sourceLink" required>
+        </div>
+        <div class="form-group">
+          <label for="userMessage">User Message *</label>
+          <input type="text" id="userMessage" name="userMessage" required>
+        </div>
+      </div>
+
+      <h2>Comments</h2>
+      <div class="section">
+        <div class="form-group" style="flex: 1 1 100%;">
+          <label for="comments">Comments</label>
+          <textarea id="comments" name="comments" rows="4"></textarea>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <button type="submit">Save</button>
+      </div>
+    </form>
+    <div id="message"></div>
+  </div>
+
+  <script>
+    // Show form on "Add Lead" click
+    document.getElementById('addLeadButton').addEventListener('click', function() {
+      document.getElementById('leadFormContainer').style.display = 'block';
+      this.style.display = 'none';
+    });
+
+    // Handle form submission
+    document.getElementById('leadForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const form = document.getElementById('leadForm');
+      const formData = new FormData(form);
+      const data = {};
+
+      formData.forEach((value, key) => {
+        if (key === 'painArea') {
+          if (data[key]) {
+            data[key].push(value);
+          } else {
+            data[key] = [value];
+          }
+        } else {
+          data[key] = value;
+        }
+      });
+
+      if (data.dob) {
+        const dateObj = new Date(data.dob);
+        data.dob = {
+          dob: dateObj,
+          month: dateObj.getMonth() + 1,
+          day: dateObj.getDate(),
+          year: dateObj.getFullYear()
+        };
+      }
+
+      if (data.painLevel) {
+        data.painLevel = Number(data.painLevel);
+      }
+
+      if (data.branceLastFiveYears === "true") {
+        data.branceLastFiveYears = true;
+      } else if (data.branceLastFiveYears === "false") {
+        data.branceLastFiveYears = false;
+      } else {
+        data.branceLastFiveYears = null;
+      }
+
+      data.isOnlineLead = data.sourceLink && data.sourceLink.trim() !== '';
+
+      fetch('http://localhost:3000/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      })
+      .then(response => response.json())
+      .then(result => {
+        document.getElementById('message').innerText = result.message;
+        // On submission, hide the form and show the Add Lead button again
+        document.getElementById('leadFormContainer').style.display = 'none';
+        document.getElementById('addLeadButton').style.display = 'block';
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        document.getElementById('message').innerText = 'An error occurred while saving the lead.';
+      });
+    });
+  </script>
+</body>
+</html>
